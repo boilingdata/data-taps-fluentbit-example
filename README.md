@@ -12,7 +12,7 @@ Our building blocks:
 - [fluentbit](https://fluentbit.io/): _"A super fast, lightweight, and highly scalable logging and metrics processor and forwarder. It is the preferred choice for cloud and containerized environments"_
 - [Data Taps](https://www.taps.boilingdata.com/): Managed hyper scale HTTP URL for posting newline JSON at any scale, SQL transformation, and landing to S3 with optimal format.
 
-Data Taps makes a perfect end point for colllecting logs, metrics, events etc. efficiently and in scale to S3 -- a single smallest AWS Lambda, so you don't have to worry about clusters or costs. Purely from data storage cost perspective Data Taps is at least 50-80x more cost efficient than Elasticsearch with EBS volumes (assuming EBS is 100% utilised). Data Taps brings your data to S3 in de-factor compressed Parquet format, where you want them to land in the end anyway.
+Data Taps makes a perfect end point for colllecting logs, metrics, events etc. efficiently and in scale to S3 -- a single smallest AWS Lambda, so you don't have to worry about clusters or costs. Purely from data storage cost perspective Data Taps is at least 50-80x more cost efficient than Elasticsearch with EBS volumes (assuming EBS is 100% utilised which never is the case of a healthy system, rather closer to 50%). Data Taps brings your data to S3 in de-factor compressed Parquet format, where you want them to land in the end anyway.
 
 ## Building Blocks
 
