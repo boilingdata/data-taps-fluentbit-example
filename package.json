@@ -1,0 +1,7 @@
+{
+  "name": "data-taps-fluentbit-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dan Forsberg <dan@boilingdata.com>",
+  "license": "MIT"
+}
