@@ -4,7 +4,7 @@
 # FluentBit example with Data Taps
 
 <p align="center">
-  <img src="img/data-taps-fluentbit-example.png" title="simple architecture">
+  <img src="img/fluentbit.png" title="simple architecture">
 </p>
 
 Our building blocks:
