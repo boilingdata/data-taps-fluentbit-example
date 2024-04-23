@@ -32,13 +32,11 @@ Install FluentBit. The [`fluent-bit.yaml`](fluent-bit.yaml) configuration file i
 brew install fluent-bit
 ```
 
-### 3. Data Taps
+### 3. Data Tap
 
-> Data Tap scales enormously as it is a single AWS Lambda function. [A single AWS Lambda function can scale to 1000 instances in 10s - however, it is hard to reach that level due to the efficient data processing with Data Taps](https://boilingdata.medium.com/seriously-can-aws-lambda-take-streaming-data-d69518708fb6). You can ingest GBs of data per second if you need to with unparalleled cost efficiency. Data Taps is 2-50x more cost efficient than e.g. AWS Firehose due to the optimised C++ AWS Lambda runtime and embedded DuckDB streaming SQL engine. It runs with steady latency on the smallest arm64 AWS Lambda, buffers data and outputs periodically to S3 Bucket. Both AWS Lambda and S3 are 1st tier AWS cloud services with built-in High-Availability and high durability (S3).
+A Data Tap is a single AWS Lambda function with [Function URL](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html) and customized C++ runtime embedding [DuckDB](https://www.duckdb.org/). It uses streaming SQL clause to upload the buffered HTTP POSTed newline JSON data in the Lambda to S3, hive partitioned, and as ZSTD compressed Parquet. You can tune the SQL clause your self for filtering, search, and aggregations. You can also set the thresholds when the upload to S3 happens. A Data Tap runs already very efficiently with the smallest arm64 AWS Lambda, making it the simplest, fastest, and most cost efficient solution for streaming data onto S3 in scale. You can run it on [your own AWS Account](https://github.com/boilingdata/data-taps-template) or hosted by Boiling Cloud.
 
-The Data Tap runs on your AWS Account, whilst BoilingData cloud is used to run analytics over the collected data.
-
-> You can use any data analytics too to read the produced Parquet files partitioned on S3. BoilingData is special in the sense as it is also AWS Lambda serverless.
+You need to have [BoilingData account](https://github.com/boilingdata/boilingdata-bdcli) and use it to create a [Data Tap](https://github.com/boilingdata/data-taps-template). The account is used to [fetch authorization tokens](https://github.com/boilingdata/data-taps-template?tab=readme-ov-file#3-get-token-and-ingestion-url-and-send-data) which allow you to send data to a Data Tap (security access control). You can also share write access (see the `AUTHORIZED_USERS` AWS Lambda environment variable) to other BoilingData users if you like, efficiently creating Data Mesh architectures.
 
 ## Prerequisites
 
